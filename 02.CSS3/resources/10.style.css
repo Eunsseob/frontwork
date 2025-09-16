@@ -1,0 +1,28 @@
+table{
+    border: 1px solid;
+    border-collapse: collapse; /* 표 테두리와 셀 테두리 합치기 */
+    border-spacing: 10px 20px; /* 표 테두리와 셀 테두리의 간격 */
+
+    table-layout : fixed;
+}
+
+thead, tfoot{
+    background-color: lightgray;
+}
+tbody{
+    background-color: darkolivegreen;
+}
+th, td{
+    border: 1px solid;
+    width: 150px;
+    height: 80px;
+    /* padding: 10px; */
+    text-align: center;
+    vertical-align: bottom; /* middle(기본값) */
+
+    word-break: break-all;
+}
+
+.borderTop{
+    border-top: 2px solid goldenrod;
+}
