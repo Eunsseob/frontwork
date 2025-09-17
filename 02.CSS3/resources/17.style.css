@@ -1,0 +1,28 @@
+header{
+    text-align: center;
+}
+
+section{
+    display: flex;
+}
+
+.menu-item{
+    width: 300px;
+    height: 200px;
+    margin: 5px;
+    background-color: no-repeat;
+    background-size: cover;
+}
+
+#menu1{background-image: url(img/rice.png);}
+#menu2{background-image: url(img/gook.png);}
+#menu3{background-image: url(img/banchan.png);}
+#menu4{background-image: url(img/main.png);}
+#menu5{background-image: url(img/dessert.png);}
+
+h2{
+    color: white;
+    text-align: center;
+    line-height: 150px;
+    text-shadow: 1px 1px black;
+}
