@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>변수와 자료형</title>
+</head>
+<body>
+    <h1>변수와 자료형</h1>
+    <h2>변수 선언시 var뿐만 아니라 let, const를 이용하여 선언 가능</h2>
+
+    <h3>* var, let, const의 차이점</h3>
+
+    <h4>1) 변수 선언방법</h4>
+    <button onclick="diffDeclare();">클릭</button>
+
+    <h4>2) 스코프(사용 가능한 범위)</h4>
+    <button onclick="diffScope();">클릭</button>
+
+    <script>
+        function diffDeclare() {
+            // 1) var : 중복선언 가능(단점), 재할당 가능
+            var userId = "user01";
+            console.log(userId);
+
+            var userId = "user02";
+            console.log(userId);
+
+            userId = "user03";  // 재할당
+            console.log(userId);
+
+            console.log("-------------");
+
+            // 2) let : 중복선언 불가, 재할당 가능
+            let userPw = "pass01";
+            console.log(userPw);
+
+            // let userPw = "pass02";  불가
+
+            userPw = "pass02";
+            console.log(userPw);
+
+            console.log("-------------");
+
+            // 3) const : 중복선언 불가, 재할당 불가 (프로그램의 상수 개념)
+            const userName = "홍길동";
+            console.log(userName);
+
+            // const userName = "더조은";       중복선언 불가
+
+            // userName = "더조은";          재할당 불가. 
+            // console.log(userName);       출력시 오류남
+
+            /*
+                - var은 자유롭게 변수선언, 사용할 수 있다는 장점이 있지만
+                - 중복된 변수가 남발할 수 있고 의도치 않게 값이 변경이 될 수도 있음 => 큰 단점
+                => 보완하여 나온것인 let, const임
+                   권장사항 : let, const를 위주로 사용
+            */
+        }
+
+        function diffScope() {
+            // 1) var : function scope => 변수가 선언된 "함수 영역"내에서 사용가능
+            var name = "한빛나";
+            console.log(name);
+
+            if(true) {
+                var age = 20;
+            }
+            console.log(age);   // 사용가능
+
+            for(var i=0; i<3; i++) {
+
+            }
+            console.log(i);     // 사용가능
+
+            console.log("-------------");
+
+            // 2) let, const : block scope => 변수가 선언된 "블럭{ }"내에서만 사용 가능(다른 프로그램과 동일)
+            if(true) {
+                let hobby = "운동";
+                const gender = "M";
+            }
+            // console.log(hobby);
+            // console.log(gender);
+        }
+    </script>
+
+    <h3>* 변수 선언 위치에 따른 전역변수/지역변수</h3>
+    <script>
+        // window.onload : 이문서가 다 로딩된 후 바로 실행시키고자 할 때
+        // window.onload = function(){
+        //     console.log("문서로딩 완료");
+        // }
+
+        // 특정 함수영역 밖에 선언된 변수는 전역변수로 잡힘
+        var declareVar = "var로 전역변수";
+        let declareLet = "let 전역변수";
+        const declareConst = "const 전역변수";
+        declareNone = "그냥 전역변수" // 변수명 앞에 아무런 키워드가 없으면 전역변수임.
+
+        window.onload = function(){
+            // console.log(declareVar);
+            // console.log(declareLet);
+            // console.log(declareConst);
+            // console.log(declareNone);
+
+            // 전역변수와 동일한 이름으로 지역변수 선언
+            // 지역변수가 우선순위가 더 높아 지역변수가 호출됨
+
+            var declareVar = "var로 지역변수";
+            let declareLet = "let 지역변수";
+            const declareConst = "const 지역변수";
+
+            console.log(declareVar);
+            console.log(declareLet);
+            console.log(declareConst);
+            console.log("=========================");
+
+            // 전역변수에 접근하고 싶다면 => window. 또는 this. 으로 접근
+            console.log(window.declareVar)
+            console.log(this.declareVar);
+
+            // let, const의 경우 => undefined
+            console.log(this.declareLet);
+            console.log(this.declareConst);
+
+            // 변수명 앞에 아무런 키워드가 없으면 전역 변수임
+            declareInner = "얘는 뭘까?";
+
+            console.log(declareInner);
+            console.log(this.declareInner);
+
+            // 다른 함수 호출
+            test();
+        }
+
+        
+
+        function test(){
+            console.log("=================");
+            console.log(declareInner)
+        }
+    </script>
+
+    <hr>   
+
+    <h2>자료형</h2>
+    <p>
+        Dyanmic Typing : 변수 선언시 자료형을 별도로 지정하지 않음(그렇다고 자료형이 없는거 아님)
+                        => 대입되는 값에 의해 타입 결정됨
+    </p>
+
+    <h2>자바스크립트의 자료형</h2>
+    <ul>
+        <li>String(문자열)</li>
+        <li>number(숫자)</li>
+        <li>boolean(논리)</li>
+        <li>object(객체)</li>
+        <li>function(함수)</li>
+        <li>undefined(초기화가 안된 변수)</li>
+    </ul>
+
+    <button onclick="typeTest();">자료형 테스트</button>
+    <div id="area1"></div>
+
+    <script>
+        function typeTest(){
+            const name = "더조은"
+            const age = 20;
+            const flag = true;
+            const hobby = ['영화', '음악', '노래'];
+            const divEle = document.querySelector('#area1');
+            const user = {
+                name : '이한나',
+                age : 25,
+                id : 'user01'
+            };
+
+            const fn = function(){
+                alert('함수자료형');
+            }
+
+            let noVal;
+
+            console.log("======== 자료형 ========")
+
+            console.log(typeof name, name);
+            console.log(typeof age, age);
+            console.log(typeof flag, flag);
+
+            console.log(typeof hobby, hobby);
+            console.log(typeof divEle, divEle);
+            console.log(typeof user, user);
+
+            console.log(typeof noVal, noVal);
+
+            divEle.innerHTML = typeof name + ", " + name + "<br>";
+
+            // 백틱 ( ES6 버전부터 사용가능 )
+            let name1 = '이름'
+                        + '홍길동';
+            
+            let name2 = ` 이름
+            홍길동`;
+
+            let str = 'Hello ' + name2;
+            let str1 = `Hello${name2}`
+
+            let ta = `<table>
+                        <tr>
+                            <td>${name1}</td>
+                        <tr>
+                        <tr>
+                            <td>${str}</td>
+                        <tr>
+                    </table>`;
+
+            // div 화면에 출력
+            // divEle.innerHTML = typeof name + ", " + name + "<br>";
+            divEle.innerHTML = `${typeof name}, ${name}<br>
+                                ${typeof age}, ${age}<br>
+                                ${typeof flag}, ${flag}<br>
+                                ${typeof hobby}, ${hobby}<br>
+                                ${typeof divEle}, ${divEle}<br>
+                                ${typeof user}, ${user}<br>
+                                ${typeof fn}, ${fn}<br>
+                                ${typeof noVal}, ${noVal}<br>`;
+        }
+    </script>
+</body>
+</html>
