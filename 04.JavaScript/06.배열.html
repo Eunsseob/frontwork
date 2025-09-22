@@ -229,6 +229,28 @@
         }
     </script>
 
+    <hr>
+
+    <h4>
+        8) 배열.toString() / 배열.join([구분자]) : 배열에 각 인덱스에 담긴 값들을 하나의 '문자열'로 합쳐서 반환
+    </h4>
+
+    <div class="area" id="area9"></div>
+    <button onclick="joinTest();">확인하기</button>
+
+    <script>
+        function joinTest() {
+            const area9 = document.getElementById('area9');
+
+            const arr = ['나는', '오늘', '맛있는', '저녁식사였어'];
+            area9.innerHTML = `arr : ${arr}<br>`;
+            area9.innerHTML += `toString : ${arr.toString()}<br>`;
+
+            area9.innerHTML += `join : ${arr.join()}<br>`;  // 기본 구분자는 컴마(,)임
+            area9.innerHTML += `join : ${arr.join(' ')}<br>`;
+        }
+    </script>
+
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
     
@@ -243,19 +265,19 @@
                                         name='apple' 
                                         value='selectall'
                                         onclick='selectAll(this)'/> <b>Select All</b></th>
-                <td><input type="checkbox" name="apple">소설</td>
-                <td><input type="checkbox" name="apple"><label for="apple2">에세이</label></td>
-                <td><input type="checkbox" name="apple"><label for="apple3">인문</label></td>
-                <td><input type="checkbox" name="apple"><label for="apple4">요리</label></td>
-                <td><input type="checkbox" name="apple"><label for="apple5">건강</label></td>
+                <td><input type="checkbox" name="apple" onclick="selectAll();">소설</td>
+                <td><input type="checkbox" name="apple" onclick="selectAll();"><label for="apple2">에세이</label></td>
+                <td><input type="checkbox" name="apple" onclick="selectAll();"><label for="apple3">인문</label></td>
+                <td><input type="checkbox" name="apple" onclick="selectAll();"><label for="apple4">요리</label></td>
+                <td><input type="checkbox" name="apple" onclick="selectAll();"><label for="apple5">건강</label></td>
             </tr>
         
             <tr>
-                <td><input type="checkbox" name="apple"><label for="apple6">경제</label></td>
-                <td><input type="checkbox" name="apple"><label for="apple">역사</label></td>
-                <td><input type="checkbox" name="apple"><label for="apple">컴퓨터</label></td>
-                <td><input type="checkbox" name="apple"><label for="apple">과학</label></td>
-                <td><input type="checkbox" name="apple"><label for="apple">여행</label></td>
+                <td><input type="checkbox" name="apple" onclick="selectAll();"><label for="apple6">경제</label></td>
+                <td><input type="checkbox" name="apple" onclick="selectAll();"><label for="apple">역사</label></td>
+                <td><input type="checkbox" name="apple" onclick="selectAll();"><label for="apple">컴퓨터</label></td>
+                <td><input type="checkbox" name="apple" onclick="selectAll();"><label for="apple">과학</label></td>
+                <td><input type="checkbox" name="apple" onclick="selectAll();"><label for="apple">여행</label></td>
             </tr>
         </table>
     </fieldset>
@@ -271,6 +293,43 @@
         }
     </script>
 
+    <hr>
+
+    <h4>9) 반복처리(for문, for ..in 문, for .. of문, forEach문)</h4>
+
+    <div class="area" id = "area10"></div>
+    <button onclick="for1();">확인하기</button>
+    <script>
+        function for1(){
+            const area10 = document.querySelector('#area10');
+            const arr = ['가','나','다'];
+
+            area10.innerHTML += 'for : ';
+            for(let i=0; i<arr.length; i++){
+                area10.innerHTML += `${arr[i]}, `;
+            }
+            area10.innerHTML += '<br>';
+
+            // for of문(자바의 향상된 for문과 동일)
+            area10.innerHTML += 'for of : ';
+            for(let ch of arr){
+                area10.innerHTML += `${ch},`;
+            }
+
+            area10.innerHTML += 'for in : '
+            for(let a in arr) {
+                area10.innerHTML += `${i} -> ${arr[i]}, `;
+            }
+            area10.innerHTML += '<br>';
+
+            // forEach() : 각 요소별로 전달한 함수(콜백함수)를 실행
+            area10.innerHTML += 'forEach : <br>';
+            
+            arr.forEach(function(value, index, arr1) {
+                area10.innerHTML += `${value}, ${index}, ${arr1}<br>`;
+            });
+        }
+    </script>
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 </body>
 </html>
