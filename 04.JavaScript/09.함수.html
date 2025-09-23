@@ -283,6 +283,60 @@
       }  
     </pre>
 
+    <hr>
+    <br>
+    
+    <div class="area" id="area10"></div>
+    <button onclick="test8();">실행확인</button>
+
+    <script>
+        function test8(){
+            let area10 = document.getElementById('area10');
+
+            area10.innerHTML = `${fun1()}<br>`;
+            area10.innerHTML += `${fun1_1()}<br><br>`;
+
+            area10.innerHTML += `일반함수(매개변수1개)로 실행 : ${fun2(3)}<br>`;
+            area10.innerHTML += `화살표함수(매개변수1개)로 실행 : ${fun2_1(3)}<br><br>`;
+
+            area10.innerHTML += `일반함수(매개변수1개)로 실행 : ${fun3(3,5)}<br>`;
+            area10.innerHTML += `화살표함수(매개변수1개)로 실행 : ${fun3_1(3,5)}<br><br>`;
+
+            area10.innerHTML += `일반함수(매개변수1개)로 실행 : ${fun4(3)}<br>`;
+            area10.innerHTML += `화살표함수(매개변수1개)로 실행 : ${fun4_1(3)}<br>`;
+        }
+
+        // 1) 매개변수가 없을 때
+        let fun1 = function(){
+            return "매개변수가 없는 일반함수";
+        }
+
+        let fun1_1 = () => "매개변수가 없는 화살표 함수";
+
+        // 2) 매개변수가 1개 일 때
+        let fun2 = function(num1){
+            return num1*2;
+        }
+
+        let fun2_1 = num1 => num1*2;
+
+        let fun3 = function(num1, num2){
+            return num1 + num2;
+        }
+
+        let fun3_1 = (num1, num2) => num1 + num2;
+
+        let fun4 = function(num1){
+            let result = num1 * num1;
+            return result;
+        }
+
+        let fun4_1 = num1 => {
+            let result = num1*num1;
+            return result;
+        }
+
+    </script>
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 </body>
 </html>
