@@ -215,5 +215,15 @@
             $('#result').html($('option:selected').html());
         }
     </script>
+
+    <h4>- disabled, enabled 상태 선택자 (input요소, button 등)</h4>
+    <button type="button">활성화 버튼</button>
+    <button type="button" disabled>비활성화 버튼</button>
+    <script>
+        $(() => {
+            $('button:enabled').css('backgroundColor','yellowgreen');
+            $('button:disabled').css('backgroundColor', 'orange');
+        })
+    </script>
 </body>
 </html>
