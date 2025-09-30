@@ -9,6 +9,9 @@
     <title>HOMEPAGE</title>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <style>
+      *{
+        margin: 0;
+      }
       .logo{
         height: 100px;
         padding-right : 350px;
@@ -45,10 +48,15 @@
           list-style: none;
           flex-direction: row;
       }
-      header{
-        height: 100px;
-      }
+
+      /* 헤더 */
+      header{height: 100px;}
+      header>div{float:left;}
+      header>div>img{width: 80px; margin-top: 25px;}
     
+      header>nav {float:right; margin-top: 25px;}
+      .nav>li{float:left; width: 200px; text-align: center;}
+      .nav>li:hover{background-color: rgb(4, 4, 122); color: white;}
       .nav-tabs{
         text-decoration: none;
         color: black;
@@ -71,6 +79,20 @@
         text-align: center;
         justify-content: center;
       }
+
+      a{
+        color: inherit;
+      }
+      a:hover{
+        color:white;
+      }
+      
+      /* 헤더 */
+      header>nav{ float: right; margin-top: 20px; padding: 10px;}
+
+      /* 이미지 */
+      #imgslide{clear:both; width:1000px; height: 1000px; position: relative;}
+      #imgslide>img {position:absolute;}
     </style>
 </head>
 <body>
